@@ -59,14 +59,12 @@ cp -af java $RPM_BUILD_ROOT%{_datadir}/pstoedit
 rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/readme*
 cp -af misc/* $RPM_BUILD_ROOT%{_datadir}/pstoedit
 
-gzip -9nf readme.txt java/java1/readme_java1.txt
-
 %clean
 rm -rf "$RPM_BUILD_ROOT"
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz java/java1/*.gz *.htm java/java2/readme_java2.html
+%doc readme.txt java/java1/readme_java1.txt *.htm java/java2/readme_java2.html
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/pstoedit
 %{_mandir}/man1/*
