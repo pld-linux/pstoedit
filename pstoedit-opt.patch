@@ -1,0 +1,10 @@
+--- pstoedit-3.32/configure.ac.orig	Wed Aug 21 15:53:12 2002
++++ pstoedit-3.32/configure.ac	Fri Dec 20 00:07:29 2002
+@@ -236,7 +236,6 @@
+     AC_MSG_RESULT([GNU])
+     SPECIAL_CXXFLAGS="-DBUGGYGPP -pedantic -Wall -Wwrite-strings -Wcast-qual -Wpointer-arith -Wstrict-prototypes"
+   fi
+-  CXXFLAGS="-g" 
+ elif test `echo "$CXX" | egrep -c 'xlC$'` -eq 1; then
+   AC_MSG_RESULT([AIX xlC])
+   CXXFLAGS="-D__unix__ -g -+ -I/usr/lpp/xlC/src/nihC/aixinclude"  
