@@ -1,0 +1,60 @@
+--- pstoedit-3.33/config/pstoedit-config.af.orig	2002-09-20 07:21:42.000000000 +0200
++++ pstoedit-3.33/config/pstoedit-config.af	2004-06-03 00:48:54.601128056 +0200
+@@ -16,4 +16,4 @@
+ #dummy because this should always be selected
+ AF_LIBRARY(pstoedit)
+ AF_DEF_CFLAGS([-I@includedir@])
+-AF_DEF_LIBS([-L@libdir@ -lpstoedit @LIBPLOTTER_LDFLAGS@ @LIBMING_LDFLAGS@ @LIBMAGICK_LDFLAGS@ @LIBEMF_LDFLAGS@ @LIBPNG_LDFLAGS@ @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@])
++AF_DEF_LIBS([-L@libdir@ -lpstoedit @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@])
+--- pstoedit-3.33/config/pstoedit-config.in.orig	2002-09-20 07:23:04.000000000 +0200
++++ pstoedit-3.33/config/pstoedit-config.in	2004-06-03 00:49:22.051954896 +0200
+@@ -205,7 +205,7 @@
+ #dummy because this should always be selected
+ 
+ af_cflags="$af_cflags -I@includedir@"
+-af_libs="-L@libdir@ -lpstoedit @LIBPLOTTER_LDFLAGS@ @LIBMING_LDFLAGS@ @LIBMAGICK_LDFLAGS@ @LIBEMF_LDFLAGS@ @LIBPNG_LDFLAGS@ @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@ $af_libs"
++af_libs="-L@libdir@ -lpstoedit @CXX_STD_LIB@ @CXX_RUNTIME_LIB@ @LIBLD_LDFLAGS@ $af_libs"
+ 
+ 
+ 
+--- pstoedit-3.33/src/Makefile.am.orig	2002-12-08 21:05:46.000000000 +0100
++++ pstoedit-3.33/src/Makefile.am	2004-06-03 00:48:19.967393184 +0200
+@@ -51,20 +51,20 @@
+ 	drvtk.cpp	drvtk.h                 \
+ 	$(specific_drivers_src)                 \
+         $(sample_drivers_src)                   
+-libp2edrvstd_la_LIBADD=-L. libpstoedit.la
++libp2edrvstd_la_LIBADD=libpstoedit.la
+ 
+ libp2edrvlplot_la_SOURCES=drvlplot.cpp drvlplot.h
+-libp2edrvlplot_la_LIBADD=$(LIBPLOTTER_LDFLAGS) -L. libpstoedit.la
++libp2edrvlplot_la_LIBADD=$(LIBPLOTTER_LDFLAGS) libpstoedit.la
+ 
+ libp2edrvswf_la_SOURCES=drvswf.cpp drvswf.h
+-libp2edrvswf_la_LIBADD=$(LIBMING_LDFLAGS) -L. libpstoedit.la
++libp2edrvswf_la_LIBADD=$(LIBMING_LDFLAGS) libpstoedit.la
+ 
+ libp2edrvmagick___la_SOURCES=drvmagick++.cpp drvmagick++.h
+-libp2edrvmagick___la_LIBADD=-L. libpstoedit.la
++libp2edrvmagick___la_LIBADD=libpstoedit.la
+ libp2edrvmagick___la_LDFLAGS=${LIBMAGICK_LDFLAGS} 
+ 
+ libp2edrvwmf_la_SOURCES=drvwmf.cpp drvwmf.h
+-libp2edrvwmf_la_LDFLAGS=${LIBEMF_LDFLAGS} -L. libpstoedit.la
++libp2edrvwmf_la_LDFLAGS=${LIBEMF_LDFLAGS} libpstoedit.la
+ 
+ libpstoedit_la_SOURCES =			\
+ 	dynload.cpp dynload.h			\
+@@ -81,10 +81,10 @@
+ 	psfront.h				\
+ 	version.h
+ 
+-libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB}
++libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} ${LIBLD_LDFLAGS}
+ 
+ pstoedit_SOURCES = cmdmain.cpp
+-pstoedit_LDFLAGS = -L. libpstoedit.la ${LIBLD_LDFLAGS}
++pstoedit_LDFLAGS = libpstoedit.la ${LIBLD_LDFLAGS}
+ 
+ pkginclude_HEADERS =				\
+ 	pstoedit.h				\
