@@ -2,7 +2,7 @@ Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl):	Konwerter PostScriptu i PDF do ró¿nych formatów wektorowych
 Name:		pstoedit
 Version:	3.33
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/%{name}-%{version}.tar.gz
@@ -47,7 +47,7 @@ rastrowe.
 Summary:	lplot plugin for pstoedit library
 Summary(pl):	Wtyczka lplot dla biblioteki pstoedit
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description drv-lplot
 lplot plugin for pstoedit library. It uses libplotter library.
@@ -59,7 +59,7 @@ Wtyczka lplot dla biblioteki pstoedit. U¿ywa biblioteki libplotter.
 Summary:	magick plugin for pstoedit library
 Summary(pl):	Wtyczka magick dla biblioteki pstoedit
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description drv-magick
 magick plugin for pstoedit library. It uses Magick++ library.
@@ -72,7 +72,7 @@ Magick++.
 Summary:	swf plugin for pstoedit library
 Summary(pl):	Wtyczka swf dla biblioteki pstoedit
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description drv-swf
 swf plugin for pstoedit library. It uses Ming library.
@@ -84,7 +84,7 @@ Wtyczka swf dla biblioteki pstoedit. U¿ywa biblioteki Ming.
 Summary:	wmf plugin for pstoedit library
 Summary(pl):	Wtyczka wmf dla biblioteki pstoedit
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description drv-wmf
 wmf plugin for pstoedit library. It uses libEMF library.
@@ -96,7 +96,7 @@ Wtyczka wmf dla biblioteki pstoedit. U¿ywa biblioteki libEMF.
 Summary:	pstoedit library header files
 Summary(pl):	Pliki nag³ówkowe biblioteki pstoedit
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 pstoedit library header files.
@@ -108,7 +108,7 @@ Pliki nag³ówkowe biblioteki pstoedit.
 Summary:	pstoedit static libraries
 Summary(pl):	Biblioteki statyczne pstoedit
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 pstoedit static libraries.
@@ -127,8 +127,6 @@ Biblioteki statyczne pstoedit.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-
-CPPFLAGS="-I/usr/X11R6/include -I/usr/X11R6/include/X11"
 %configure \
 	--with-libemf-include=/usr/include/libEMF
 %{__make}
