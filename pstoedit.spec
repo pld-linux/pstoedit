@@ -38,7 +38,7 @@ rastrowe.
 
 %build
 (cd config
-autoconf
+%{__autoconf}
 %configure --libdir=%{_datadir}/pstoedit
 )
 (cd src
