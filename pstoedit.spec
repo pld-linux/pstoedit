@@ -6,7 +6,9 @@ Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/%{name}-3.32.tar.gz
+# Source0-md5:	3cc02f27c6030448f7b3705f85cba34e
 Source1:	http://autotrace.sourceforge.net/tools/%{name}.m4
+# Source1-md5:	6d3384b46da54a8ccdb9d47254820b89
 Patch0:		%{name}-opt.patch
 URL:		http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/
 BuildRequires:	autoconf
