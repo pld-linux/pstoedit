@@ -1,0 +1,33 @@
+--- pstoedit-3.40/src/drvlplot.cpp.orig	2005-01-01 23:41:04.000000000 +0100
++++ pstoedit-3.40/src/drvlplot.cpp	2005-01-07 20:30:23.970555992 +0100
+@@ -963,7 +963,7 @@
+ 			plotter = new TekPlotter(cin, outf, errf);
+ 		}
+ #ifndef NO_LIBPLOTTER_X_SUPPORT
+-		else if (options->type.value == "X"0)
++		else if (options->type.value == "X")
+ 			plotter = new XPlotter(cin, outf, errf);
+ #endif
+ 		else if (options->type.value == "meta") {
+@@ -1291,8 +1291,8 @@
+ 												DriverDescription::noimage,
+ 												DriverDescription::normalopen,	// may close, reopen as binary
+ 												true,	// format supports multiple pages in one file
+-												false, /*clipping */ 
+-												driveroptions);
++												false /*clipping */
++												);
+ #endif
+ //#ifndef NO_LIBPLOTTER_GIF_SUPPORT
+ //      else if (strcmp (type, "gif") == 0)
+@@ -1390,8 +1390,8 @@
+ 											  DriverDescription::noimage,
+ 											  DriverDescription::normalopen,	// may close, reopen as binary
+ 											  true,	// format supports multiple pages in one file
+-											  false, /*clipping */
+-											  driveroptions);
++											  false /*clipping */
++											  );
+ #endif
+ 
+ #endif							// WITHSHORTCUTS
