@@ -7,8 +7,8 @@ License:	GPL
 Group:		Applications/Graphics
 Source0:	http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/%{name}-%{version}.tar.gz
 # Source0-md5:	6a671ef165bf7d1611a2ad3f0499ff5b
-Source1:	http://autotrace.sourceforge.net/tools/%{name}.m4
-# Source1-md5:	6d3384b46da54a8ccdb9d47254820b89
+Source1:	http://autotrace.sourceforge.net/tools/pstoedit.m4
+# NoSource1-md5: 6d3384b46da54a8ccdb9d47254820b89
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-no_pedantic.patch
 URL:		http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/
@@ -147,7 +147,7 @@ cp -af java $RPM_BUILD_ROOT%{_datadir}/pstoedit
 rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/readme*
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
+rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
