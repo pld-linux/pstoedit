@@ -5,9 +5,6 @@ Version:	3.30
 Release:	1
 License:	GPL
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
 Source0:	http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/%{name}_3_30.zip
 URL:		http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/
 BuildRequires:	unzip
