@@ -1,17 +1,17 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl):	Konwerter PostScriptu i PDF do ró¿nych formatów wektorowych
 Name:		pstoedit
-Version:	3.33
-Release:	5
+Version:	3.40
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	6a671ef165bf7d1611a2ad3f0499ff5b
-# modified, originally from http://autotrace.sourceforge.net/tools/pstoedit.m4
-Source1:	pstoedit.m4
+# Source0-md5:	5756c28eef3a11fe395248c5bf053556
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-no_pedantic.patch
 Patch2:		%{name}-link.patch
+Patch3:		%{name}-am18.patch
+Patch4:		%{name}-fix.patch
 URL:		http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/
 BuildRequires:	ImageMagick-c++-devel >= 5.4.8
 BuildRequires:	autoconf
@@ -19,8 +19,8 @@ BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libEMF-devel
 BuildRequires:	libplotter-devel >= 2.3
-BuildRequires:	libpng-devel
-BuildRequires:	libstdc++-devel
+BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libstdc++-devel >= 3.0
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	ming-devel
 Requires:	ghostscript
@@ -123,6 +123,8 @@ Biblioteki statyczne pstoedit.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 # need to rebuild - supplied libtool is broken (relink and C++)
@@ -131,6 +133,8 @@ Biblioteki statyczne pstoedit.
 %{__autoconf}
 %{__automake}
 %configure \
+	GS=/usr/bin/gs \
+	--enable-static \
 	--with-libemf-include=/usr/include/libEMF
 %{__make}
 
@@ -142,10 +146,10 @@ install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_aclocaldir}}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install doc/pstoedit.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install %{SOURCE1} $RPM_BUILD_ROOT%{_aclocaldir}
 
 cp -af java $RPM_BUILD_ROOT%{_datadir}/pstoedit
-rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/readme* \
+rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/{readme*,Makefile*} \
+	$RPM_BUILD_ROOT%{_datadir}/pstoedit/java/Makefile* \
 	$RPM_BUILD_ROOT%{_libdir}/pstoedit/lib*.{la,a}
 
 %clean
@@ -156,7 +160,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc readme.txt java/java1/readme_java1.txt *.htm java/java2/readme_java2.html
+%doc doc/{readme.txt,*.htm} java/java1/readme_java1.txt java/java2/readme_java2.html
 %attr(755,root,root) %{_bindir}/pstoedit
 %attr(755,root,root) %{_libdir}/libpstoedit.so.*.*
 %dir %{_libdir}/pstoedit
