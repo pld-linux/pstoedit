@@ -12,7 +12,7 @@ URL:		http://home.t-online.de/home/helga.glunz/wglunz/pstoedit/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	ImageMagick-c++-devel >= 5.4.8
-#BuildRequires:	libemf-devel ??? - libemf@lignumcomputing.com
+BuildRequires:	libEMF-devel
 BuildRequires:	libplotter-devel >= 2.3
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -76,6 +76,18 @@ swf plugin for pstoedit library. It uses Ming library.
 %description drv-swf -l pl
 Wtyczka swf dla biblioteki pstoedit. U¿ywa biblioteki Ming.
 
+%package drv-wmf
+Summary:	wmf plugin for pstoedit library
+Summary(pl):	Wtyczka wmf dla biblioteki pstoedit
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description drv-wmf
+wmf plugin for pstoedit library. It uses libEMF library.
+
+%description drv-wmf -l pl
+Wtyczka wmf dla biblioteki pstoedit. U¿ywa biblioteki libEMF.
+
 %package devel
 Summary:	pstoedit library header files
 Summary(pl):	Pliki nag³ówkowe biblioteki pstoedit
@@ -105,14 +117,15 @@ Biblioteki statyczne pstoedit.
 %patch -p1
 
 %build
-# need to rebuild - supplied libtool is broken (relink)
+# need to rebuild - supplied libtool is broken (relink and C++)
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
 
 CPPFLAGS="-I/usr/X11R6/include -I/usr/X11R6/include/X11"
-%configure
+%configure \
+	--with-libemf-include=/usr/include/libEMF
 %{__make}
 
 %install
@@ -137,12 +150,12 @@ rm -rf "$RPM_BUILD_ROOT"
 %files
 %defattr(644,root,root,755)
 %doc readme.txt java/java1/readme_java1.txt *.htm java/java2/readme_java2.html
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/pstoedit
 %attr(755,root,root) %{_libdir}/libpstoedit.so.*.*
 %dir %{_libdir}/pstoedit
 %attr(755,root,root) %{_libdir}/pstoedit/libp2edrvstd.so*
 %{_datadir}/pstoedit
-%{_mandir}/man1/*
+%{_mandir}/man1/pstoedit.1*
 
 %files drv-lplot
 %defattr(644,root,root,755)
@@ -156,8 +169,13 @@ rm -rf "$RPM_BUILD_ROOT"
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pstoedit/libp2edrvswf.so*
 
+%files drv-wmf
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pstoedit/libp2edrvwmf.so*
+
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/pstoedit-config
 %attr(755,root,root) %{_libdir}/libpstoedit.so
 %{_libdir}/libpstoedit.la
 %{_includedir}/pstoedit
