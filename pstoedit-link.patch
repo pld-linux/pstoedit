@@ -19,7 +19,7 @@
  
 --- pstoedit-3.40/src/Makefile.am.orig	2004-11-03 22:05:16.000000000 +0100
 +++ pstoedit-3.40/src/Makefile.am	2005-01-07 20:14:00.275100432 +0100
-@@ -61,27 +61,27 @@
+@@ -63,27 +63,27 @@
  	drvtk.cpp	drvtk.h                 \
  	$(specific_drivers_src)                 \
          $(sample_drivers_src)                   
@@ -44,16 +44,16 @@
  
  if USE_EMFBYSOURCE
  libp2edrvwmf_la_SOURCES=emflib.cpp drvwmf.cpp drvwmf.h initlibrary.cpp
--libp2edrvwmf_la_LDFLAGS=-no-undefined {LIBEMF_LDFLAGS} -L. libpstoedit.la -module
-+libp2edrvwmf_la_LDFLAGS=-no-undefined {LIBEMF_LDFLAGS} libpstoedit.la -module
+-libp2edrvwmf_la_LDFLAGS=-no-undefined -L. libpstoedit.la -module
++libp2edrvwmf_la_LDFLAGS=-no-undefined libpstoedit.la -module
  else
  libp2edrvwmf_la_SOURCES=drvwmf.cpp drvwmf.h initlibrary.cpp
--libp2edrvwmf_la_LDFLAGS=-no-undefined {LIBEMF_LDFLAGS} -L. libpstoedit.la -module
-+libp2edrvwmf_la_LDFLAGS=-no-undefined {LIBEMF_LDFLAGS} libpstoedit.la -module
+-libp2edrvwmf_la_LDFLAGS=-no-undefined $(LIBEMF_LDFLAGS) -L. libpstoedit.la -module
++libp2edrvwmf_la_LDFLAGS=-no-undefined $(LIBEMF_LDFLAGS) libpstoedit.la -module
  endif
  
  libpstoedit_la_SOURCES =			\
-@@ -99,11 +99,11 @@
+@@ -101,11 +101,11 @@
  	psfront.h				\
  	version.h
  
