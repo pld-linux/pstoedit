@@ -1,5 +1,5 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
-Summary(pl):	Konwerter PostScriptu i PDF do ró¿nych formatów wektorowych
+Summary(pl.UTF-8):   Konwerter PostScriptu i PDF do rÃ³Å¼nych formatÃ³w wektorowych
 Name:		pstoedit
 Version:	3.44
 Release:	1
@@ -34,67 +34,67 @@ simplified PostScript, and any format that Ghostscript or the GNU
 plotting utilities can output, such as Tektronix, CGM, and various
 bitmap formats.
 
-%description -l pl
-pstoedit konwertuje pliki PostScript i PDF do wielu ró¿nych mniej lub
-bardziej zdatnych do edycji formatów: gnuplot, idraw, xfig, tgif,
+%description -l pl.UTF-8
+pstoedit konwertuje pliki PostScript i PDF do wielu rÃ³Å¼nych mniej lub
+bardziej zdatnych do edycji formatÃ³w: gnuplot, idraw, xfig, tgif,
 Tcl/Tk, HPGL, PIC, LaTeX2e, MetaPost, Sketch, KIllustrator, PDF, GNU
 metafile, Java, DXF, Real3D, RenderMan, LightWave, Adobe Illustrator,
-uproszczony PostScript i dowolny format jaki mog± zapisywaæ
-ghostscript lub GNU plotutils - np. Tektronix, CGM, ró¿ne formaty
+uproszczony PostScript i dowolny format jaki mogÄ… zapisywaÄ‡
+ghostscript lub GNU plotutils - np. Tektronix, CGM, rÃ³Å¼ne formaty
 rastrowe.
 
 %package drv-lplot
 Summary:	lplot plugin for pstoedit library
-Summary(pl):	Wtyczka lplot dla biblioteki pstoedit
+Summary(pl.UTF-8):   Wtyczka lplot dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description drv-lplot
 lplot plugin for pstoedit library. It uses libplotter library.
 
-%description drv-lplot -l pl
-Wtyczka lplot dla biblioteki pstoedit. U¿ywa biblioteki libplotter.
+%description drv-lplot -l pl.UTF-8
+Wtyczka lplot dla biblioteki pstoedit. UÅ¼ywa biblioteki libplotter.
 
 %package drv-magick
 Summary:	magick plugin for pstoedit library
-Summary(pl):	Wtyczka magick dla biblioteki pstoedit
+Summary(pl.UTF-8):   Wtyczka magick dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description drv-magick
 magick plugin for pstoedit library. It uses Magick++ library.
 
-%description drv-magick -l pl
-Wtyczka magick (libplotter) dla biblioteki pstoedit. U¿ywa biblioteki
+%description drv-magick -l pl.UTF-8
+Wtyczka magick (libplotter) dla biblioteki pstoedit. UÅ¼ywa biblioteki
 Magick++.
 
 %package drv-swf
 Summary:	swf plugin for pstoedit library
-Summary(pl):	Wtyczka swf dla biblioteki pstoedit
+Summary(pl.UTF-8):   Wtyczka swf dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description drv-swf
 swf plugin for pstoedit library. It uses Ming library.
 
-%description drv-swf -l pl
-Wtyczka swf dla biblioteki pstoedit. U¿ywa biblioteki Ming.
+%description drv-swf -l pl.UTF-8
+Wtyczka swf dla biblioteki pstoedit. UÅ¼ywa biblioteki Ming.
 
 %package drv-wmf
 Summary:	wmf plugin for pstoedit library
-Summary(pl):	Wtyczka wmf dla biblioteki pstoedit
+Summary(pl.UTF-8):   Wtyczka wmf dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description drv-wmf
 wmf plugin for pstoedit library. It uses libEMF library.
 
-%description drv-wmf -l pl
-Wtyczka wmf dla biblioteki pstoedit. U¿ywa biblioteki libEMF.
+%description drv-wmf -l pl.UTF-8
+Wtyczka wmf dla biblioteki pstoedit. UÅ¼ywa biblioteki libEMF.
 
 %package devel
 Summary:	pstoedit library header files
-Summary(pl):	Pliki nag³ówkowe biblioteki pstoedit
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki pstoedit
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -102,19 +102,19 @@ Requires:	libstdc++-devel
 %description devel
 pstoedit library header files.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki pstoedit.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki pstoedit.
 
 %package static
 Summary:	pstoedit static libraries
-Summary(pl):	Biblioteki statyczne pstoedit
+Summary(pl.UTF-8):   Biblioteki statyczne pstoedit
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 pstoedit static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne pstoedit.
 
 %prep
