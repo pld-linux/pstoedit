@@ -1,5 +1,5 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
-Summary(pl.UTF-8):   Konwerter PostScriptu i PDF do różnych formatów wektorowych
+Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
 Version:	3.44
 Release:	1
@@ -45,7 +45,7 @@ rastrowe.
 
 %package drv-lplot
 Summary:	lplot plugin for pstoedit library
-Summary(pl.UTF-8):   Wtyczka lplot dla biblioteki pstoedit
+Summary(pl.UTF-8):	Wtyczka lplot dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -57,7 +57,7 @@ Wtyczka lplot dla biblioteki pstoedit. Używa biblioteki libplotter.
 
 %package drv-magick
 Summary:	magick plugin for pstoedit library
-Summary(pl.UTF-8):   Wtyczka magick dla biblioteki pstoedit
+Summary(pl.UTF-8):	Wtyczka magick dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -70,7 +70,7 @@ Magick++.
 
 %package drv-swf
 Summary:	swf plugin for pstoedit library
-Summary(pl.UTF-8):   Wtyczka swf dla biblioteki pstoedit
+Summary(pl.UTF-8):	Wtyczka swf dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -82,7 +82,7 @@ Wtyczka swf dla biblioteki pstoedit. Używa biblioteki Ming.
 
 %package drv-wmf
 Summary:	wmf plugin for pstoedit library
-Summary(pl.UTF-8):   Wtyczka wmf dla biblioteki pstoedit
+Summary(pl.UTF-8):	Wtyczka wmf dla biblioteki pstoedit
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -94,7 +94,7 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 
 %package devel
 Summary:	pstoedit library header files
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki pstoedit
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki pstoedit
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -107,7 +107,7 @@ Pliki nagłówkowe biblioteki pstoedit.
 
 %package static
 Summary:	pstoedit static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne pstoedit
+Summary(pl.UTF-8):	Biblioteki statyczne pstoedit
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
