@@ -1,0 +1,18 @@
+--- pstoedit-3.45/src/drvswf.cpp.orig	2007-07-22 13:27:36.000000000 +0200
++++ pstoedit-3.45/src/drvswf.cpp	2008-10-15 20:37:55.206630631 +0200
+@@ -373,7 +373,6 @@
+ 		printf("s->end();\n" "SWFDisplayItem * d = movie->add(s);\n" "d->move(0, 0); }\n");
+ 
+ // delete s;
+-	delete d;
+ 
+ }
+ 
+@@ -474,7 +473,6 @@
+ 	SWFDisplayItem_setMatrix(d->item, ma, mb, mc, md, mx, my);
+ 
+ #endif
+-	delete d;
+ 	// delete f;  // causes memory problems otherwise - at the cost of leaks - Hmmm
+ 	// delete t;
+ 
