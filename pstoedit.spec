@@ -1,16 +1,17 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
-Version:	3.44
+Version:	3.45
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	13f24cb070da3f6af82ed84f4e53f049
+# Source0-md5:	071efc64d9edf5d942b407348ac7451d
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-no_pedantic.patch
 Patch2:		%{name}-link.patch
 Patch3:		%{name}-am18.patch
+Patch4:		%{name}-ming.patch
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
 BuildRequires:	GraphicsMagick-c++-devel >= 1.0.6
 BuildRequires:	autoconf
@@ -42,6 +43,31 @@ metafile, Java, DXF, Real3D, RenderMan, LightWave, Adobe Illustrator,
 uproszczony PostScript i dowolny format jaki mogą zapisywać
 ghostscript lub GNU plotutils - np. Tektronix, CGM, różne formaty
 rastrowe.
+
+%package devel
+Summary:	pstoedit library header files
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki pstoedit
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
+
+%description devel
+pstoedit library header files.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki pstoedit.
+
+%package static
+Summary:	pstoedit static library
+Summary(pl.UTF-8):	Statyczna biblioteka pstoedit
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+pstoedit static library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka pstoedit.
 
 %package drv-lplot
 Summary:	lplot plugin for pstoedit library
@@ -92,37 +118,13 @@ wmf plugin for pstoedit library. It uses libEMF library.
 %description drv-wmf -l pl.UTF-8
 Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 
-%package devel
-Summary:	pstoedit library header files
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki pstoedit
-Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
-Requires:	libstdc++-devel
-
-%description devel
-pstoedit library header files.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki pstoedit.
-
-%package static
-Summary:	pstoedit static libraries
-Summary(pl.UTF-8):	Biblioteki statyczne pstoedit
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-pstoedit static libraries.
-
-%description static -l pl.UTF-8
-Biblioteki statyczne pstoedit.
-
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 # need to rebuild - supplied libtool is broken (relink and C++)
@@ -160,7 +162,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{readme.txt,*.htm} java/java1/readme_java1.txt java/java2/readme_java2.html
 %attr(755,root,root) %{_bindir}/pstoedit
-%attr(755,root,root) %{_libdir}/libpstoedit.so.*.*
+%attr(755,root,root) %{_libdir}/libpstoedit.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpstoedit.so.0
 %dir %{_libdir}/pstoedit
 %attr(755,root,root) %{_libdir}/pstoedit/libp2edrvstd.so*
 %{_datadir}/pstoedit
@@ -187,8 +190,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libpstoedit.so
 %{_libdir}/libpstoedit.la
 %{_includedir}/pstoedit
-%{_pkgconfigdir}/*.pc
-%{_aclocaldir}/*.m4
+%{_pkgconfigdir}/pstoedit.pc
+%{_aclocaldir}/pstoedit.m4
 
 %files static
 %defattr(644,root,root,755)
