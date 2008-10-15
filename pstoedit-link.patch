@@ -1,7 +1,7 @@
---- pstoedit-3.40/src/Makefile.am.orig	2004-11-03 22:05:16.000000000 +0100
-+++ pstoedit-3.40/src/Makefile.am	2005-01-07 20:14:00.275100432 +0100
-@@ -63,27 +63,27 @@
- 	drvtk.cpp	drvtk.h                 \
+--- pstoedit-3.45/src/Makefile.am.orig	2007-07-08 12:52:54.000000000 +0200
++++ pstoedit-3.45/src/Makefile.am	2008-10-15 19:39:15.290634821 +0200
+@@ -64,27 +64,27 @@
+ 	drvsvm.cpp	drvsvm.h svm_actions.h	\
  	$(specific_drivers_src)                 \
          $(sample_drivers_src)                   
 -libp2edrvstd_la_LIBADD=-L. libpstoedit.la
@@ -34,12 +34,7 @@
  endif
  
  libpstoedit_la_SOURCES =			\
-@@ -101,11 +101,11 @@
- 	psfront.h				\
- 	version.h
- 
--libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB}
-+libpstoedit_la_LIBADD = ${CXX_STD_LIB} ${CXX_RUNTIME_LIB} ${LIBLD_LDFLAGS}
+@@ -107,7 +107,7 @@
  libpstoedit_la_LDFLAGS = -no-undefined
  
  pstoedit_SOURCES = cmdmain.cpp
