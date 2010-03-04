@@ -1,19 +1,17 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
-Version:	3.45
+Version:	3.50
 Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	071efc64d9edf5d942b407348ac7451d
+# Source0-md5:	97d649305ad90fab7a569154f17e0916
 Patch0:		%{name}-opt.patch
-Patch1:		%{name}-no_pedantic.patch
-Patch2:		%{name}-link.patch
-Patch3:		%{name}-am18.patch
-Patch4:		%{name}-ming.patch
+Patch1:		%{name}-link.patch
+Patch2:		%{name}-am18.patch
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
-BuildRequires:	GraphicsMagick-c++-devel >= 1.0.6
+BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
@@ -123,8 +121,6 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 # need to rebuild - supplied libtool is broken (relink and C++)
@@ -135,8 +131,9 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %configure \
 	GS=/usr/bin/gs \
 	--enable-static \
+	--with-magick \
 	--with-libemf-include=/usr/include/libEMF
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -147,7 +144,7 @@ install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_aclocaldir}}
 
 install doc/pstoedit.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-cp -af java $RPM_BUILD_ROOT%{_datadir}/pstoedit
+cp -af contrib/java $RPM_BUILD_ROOT%{_datadir}/pstoedit
 rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/{readme*,Makefile*} \
 	$RPM_BUILD_ROOT%{_datadir}/pstoedit/java/Makefile* \
 	$RPM_BUILD_ROOT%{_libdir}/pstoedit/lib*.{la,a}
@@ -160,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc doc/{readme.txt,*.htm} java/java1/readme_java1.txt java/java2/readme_java2.html
+%doc doc/{readme.txt,*.htm} contrib/java/java1/readme_java1.txt contrib/java/java2/readme_java2.html
 %attr(755,root,root) %{_bindir}/pstoedit
 %attr(755,root,root) %{_libdir}/libpstoedit.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libpstoedit.so.0
