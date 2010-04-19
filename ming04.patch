@@ -1,0 +1,11 @@
+--- pstoedit-3.50/src/drvswf.cpp.orig	2010-04-19 19:15:25.019674428 +0200
++++ pstoedit-3.50/src/drvswf.cpp	2010-04-19 19:16:47.730499986 +0200
+@@ -32,7 +32,7 @@
+ //static bool cubic = false;
+ 
+ #include "mingpp.h"
+-#include "ming_config.h"
++#include "ming.h"
+ 
+ #if defined(_WIN32)
+ extern "C" {

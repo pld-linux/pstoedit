@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
 Patch2:		%{name}-am18.patch
+Patch3:		ming04.patch
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	autoconf
@@ -121,6 +122,7 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # need to rebuild - supplied libtool is broken (relink and C++)
