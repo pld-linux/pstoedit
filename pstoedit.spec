@@ -16,12 +16,14 @@ BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
+BuildRequires:	ghostscript
 BuildRequires:	libEMF-devel
 BuildRequires:	libplotter-devel >= 2.3
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libstdc++-devel >= 3.0
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	ming-devel
+BuildRequires:	pkgconfig
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -131,10 +133,10 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %{__autoconf}
 %{__automake}
 %configure \
-	GS=/usr/bin/gs \
+	GS=%{_bindir}/gs \
 	--enable-static \
 	--with-magick \
-	--with-libemf-include=/usr/include/libEMF
+	--with-libemf-include=%{_includedir}/libEMF
 %{__make} -j1
 
 %install
