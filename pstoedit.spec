@@ -5,7 +5,7 @@ Version:	3.50
 Release:	3
 License:	GPL v2+
 Group:		Applications/Graphics
-Source0:	http://dl.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
 # Source0-md5:	97d649305ad90fab7a569154f17e0916
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-link.patch
@@ -13,9 +13,9 @@ Patch2:		%{name}-am18.patch
 Patch3:		ming04.patch
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
 BuildRequires:	ImageMagick-c++-devel
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	bzip2-devel
+BuildRequires:	gd-devel
 BuildRequires:	ghostscript
 BuildRequires:	libEMF-devel
 BuildRequires:	libplotter-devel >= 2.3
@@ -50,6 +50,7 @@ Summary:	pstoedit library header files
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki pstoedit
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	gd-devel
 Requires:	libstdc++-devel
 
 %description devel
@@ -131,6 +132,7 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	GS=%{_bindir}/gs \
