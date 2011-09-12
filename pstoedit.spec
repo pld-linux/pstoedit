@@ -1,16 +1,12 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
-Version:	3.50
-Release:	4
+Version:	3.60
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	97d649305ad90fab7a569154f17e0916
-Patch0:		%{name}-opt.patch
-Patch1:		%{name}-link.patch
-Patch2:		%{name}-am18.patch
-Patch3:		ming04.patch
+# Source0-md5:	1bd14f33c1cf57bf6880e2f8f3f93080
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	autoconf >= 2.50
@@ -122,13 +118,8 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-# need to rebuild - supplied libtool is broken (relink and C++)
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -143,15 +134,15 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_aclocaldir}}
+#install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_aclocaldir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install doc/pstoedit.1 $RPM_BUILD_ROOT%{_mandir}/man1
+#install doc/pstoedit.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 cp -af contrib/java $RPM_BUILD_ROOT%{_datadir}/pstoedit
-rm -f $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/{readme*,Makefile*} \
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/{readme*,Makefile*} \
 	$RPM_BUILD_ROOT%{_datadir}/pstoedit/java/Makefile* \
 	$RPM_BUILD_ROOT%{_libdir}/pstoedit/lib*.{la,a}
 
