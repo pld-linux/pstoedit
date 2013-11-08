@@ -18,8 +18,10 @@ BuildRequires:	libplotter-devel >= 2.3
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libstdc++-devel >= 5:3.0
 BuildRequires:	libtool >= 2:1.4d-3
+BuildRequires:	libzip-devel
 BuildRequires:	ming-devel
 BuildRequires:	pkgconfig
+BuildRequires:	zlib-devel
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -91,6 +93,18 @@ magick plugin for pstoedit library. It uses Magick++ library.
 %description drv-magick -l pl.UTF-8
 Wtyczka magick (libplotter) dla biblioteki pstoedit. Używa biblioteki
 Magick++.
+
+%package drv-pptx
+Summary:	pptx plugin for pstoedit library
+Summary(pl.UTF-8):	Wtyczka pptx dla biblioteki pstoedit
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description drv-pptx
+pptx plugin for pstoedit library. It uses libzip library.
+
+%description drv-pptx -l pl.UTF-8
+Wtyczka pptx dla biblioteki pstoedit. Używa biblioteki libzip.
 
 %package drv-swf
 Summary:	swf plugin for pstoedit library
@@ -170,6 +184,10 @@ rm -rf $RPM_BUILD_ROOT
 %files drv-magick
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pstoedit/libp2edrvmagick++.so*
+
+%files drv-pptx
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pstoedit/libp2edrvpptx.so*
 
 %files drv-swf
 %defattr(644,root,root,755)
