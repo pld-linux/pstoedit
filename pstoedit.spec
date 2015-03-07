@@ -2,7 +2,7 @@ Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
 Version:	3.62
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
@@ -139,6 +139,8 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
+export CPPFLAGS="%{rpmcflags} `pkg-config --cflags libzip`"
+export CFLAGS="%{rpmcflags} `pkg-config --cflags libzip`"
 %configure \
 	GS=%{_bindir}/gs \
 	--enable-static \
