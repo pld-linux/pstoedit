@@ -1,28 +1,30 @@
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
-Version:	3.70
-Release:	9
+Version:	3.73
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
 Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	d3ad4657b4944a8400f7ca76f78cb943
+# Source0-md5:	aec93415ede08505e950ec7fee4289ff
 Patch0:		pluginsdir.patch
 Patch1:		imagemagick7.patch
 URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
-BuildRequires:	ImageMagick-c++-devel
+BuildRequires:	ImageMagick-c++-devel >= 6
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gd-devel
 BuildRequires:	ghostscript
+# TODO: change to texlive component when ready in PLD
+BuildRequires:	latex2man
 BuildRequires:	libEMF-devel
-BuildRequires:	libplot-devel >= 2.3
 BuildRequires:	libplotter-devel >= 2.3
 BuildRequires:	libstdc++-devel >= 5:3.0
-BuildRequires:	libtool >= 2:1.4d-3
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libzip-devel
 BuildRequires:	ming-devel
 BuildRequires:	pkgconfig
+BuildRequires:	texlive-format-pdflatex
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -138,12 +140,11 @@ Wtyczka wmf dla biblioteki pstoedit. Używa biblioteki libEMF.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-export CPPFLAGS="%{rpmcflags} `pkg-config --cflags libzip`"
-export CFLAGS="%{rpmcflags} `pkg-config --cflags libzip`"
+export CPPFLAGS="%{rpmcppflags} $(pkg-config --cflags libzip)"
 %configure \
 	GS=%{_bindir}/gs \
 	--enable-static \
@@ -153,12 +154,12 @@ export CFLAGS="%{rpmcflags} `pkg-config --cflags libzip`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_aclocaldir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#install doc/pstoedit.1 $RPM_BUILD_ROOT%{_mandir}/man1
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/pstoedit
 
 cp -af contrib/java $RPM_BUILD_ROOT%{_datadir}/pstoedit
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/pstoedit/java/*/{readme*,Makefile*} \
