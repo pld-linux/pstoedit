@@ -1,9 +1,9 @@
---- pstoedit-3.73/src/pstoedit.cpp.orig	2019-03-09 09:17:34.193450804 +0100
-+++ pstoedit-3.73/src/pstoedit.cpp	2019-03-09 09:19:23.226193457 +0100
-@@ -271,30 +271,6 @@
- 	  pluginsloaded = true;
+--- pstoedit-3.78/src/pstoedit.cpp.orig	2022-04-11 17:09:22.797484174 +0200
++++ pstoedit-3.78/src/pstoedit.cpp	2022-04-11 17:09:25.547439114 +0200
+@@ -267,30 +267,6 @@ static void loadpstoeditplugins(const ch
+ 		//pluginsloaded = true;
  	}
- #endif
+ 
 -	// If the above failed, also look in the directory where the pstoedit .exe/dll was found
 -	if (!pluginsloaded) {
 -	  char szExePath[1000];
@@ -13,21 +13,21 @@
 -	  char *p = nullptr;
 -	  if (r && (p = strrchr(szExePath, directoryDelimiter)) != nullptr) {
 -		*p = '\0';
--		loadPlugInDrivers(szExePath, errstream,verbose);
+-		pluginsloaded |= loadPlugInDrivers(szExePath, errstream,verbose);
 -	  }
 -	  // now try also $exepath/../lib/pstoedit
--          if (szExePath[0]) {
--            // it is not an empty string
+-      if (szExePath[0]) {
+-         // it is not an empty string
 -#if COMPILEDFOR64BIT 
 -	    strcat_s(szExePath,1000,"/../lib64/pstoedit");
 -#else
 -	    strcat_s(szExePath,1000,"/../lib/pstoedit");
 -#endif
 -	    if (!strequal(szExePath, plugindir.c_str())) {
--	      loadPlugInDrivers(szExePath, errstream,verbose);
+-	      pluginsloaded |= loadPlugInDrivers(szExePath, errstream,verbose);
 -	    }
 -	  }
 -	}
- 
- 	// delete[]plugindir;
- }
+ #ifdef PSTOEDITLIBDIR
+ 	if (!pluginsloaded) {
+ 		struct stat s;
