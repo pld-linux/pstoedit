@@ -25,6 +25,7 @@ BuildRequires:	libzip-devel
 BuildRequires:	ming-devel
 BuildRequires:	pkgconfig
 BuildRequires:	texlive-format-pdflatex
+BuildRequires:	texlive-xetex
 Requires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
