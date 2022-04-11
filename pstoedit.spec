@@ -158,6 +158,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libpstoedit.la
+
 # packaged as %doc
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/pstoedit
 
@@ -206,7 +209,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libpstoedit.so
-%{_libdir}/libpstoedit.la
 %{_includedir}/pstoedit
 %{_pkgconfigdir}/pstoedit.pc
 %{_aclocaldir}/pstoedit.m4
