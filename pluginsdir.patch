@@ -1,13 +1,12 @@
---- pstoedit-3.78/src/pstoedit.cpp.orig	2022-04-11 17:09:22.797484174 +0200
-+++ pstoedit-3.78/src/pstoedit.cpp	2022-04-11 17:09:25.547439114 +0200
-@@ -267,30 +267,6 @@ static void loadpstoeditplugins(const ch
+--- pstoedit-4.01/src/pstoedit.cpp.orig	2024-04-24 22:14:51.433955369 +0200
++++ pstoedit-4.01/src/pstoedit.cpp	2024-04-24 22:16:13.650176633 +0200
+@@ -283,29 +283,6 @@ void loadpstoeditplugins(const char *pro
  		//pluginsloaded = true;
  	}
  
 -	// If the above failed, also look in the directory where the pstoedit .exe/dll was found
 -	if (!pluginsloaded) {
--	  char szExePath[1000];
--	  szExePath[0] = '\0';
+-	  char szExePath[1000] = { 0 };
 -	  const unsigned long r = P_GetPathToMyself(progname, szExePath, sizeof(szExePath));
 -	  if (verbose)  errstream << "pstoedit : path to myself:" << progname << " " << r << " " << szExePath<< endl;
 -	  char *p = nullptr;

@@ -1,15 +1,16 @@
+# TODO: make Qt6 GUI in QT/PstoeditQtGui
 Summary:	Convert PostScript and PDF files into various vector-graphic formats
 Summary(pl.UTF-8):	Konwerter PostScriptu i PDF do różnych formatów wektorowych
 Name:		pstoedit
-Version:	3.78
-Release:	2
+Version:	4.01
+Release:	1
 License:	GPL v2+
 Group:		Applications/Graphics
-Source0:	http://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
-# Source0-md5:	5c748c4fb1e7d6187694a5bdbd9f27d8
+Source0:	https://downloads.sourceforge.net/pstoedit/%{name}-%{version}.tar.gz
+# Source0-md5:	ac1e6b102cd94e9c954bd67ef984636d
 Patch0:		pluginsdir.patch
 Patch1:		imagemagick7.patch
-URL:		http://www.helga-glunz.homepage.t-online.de/pstoedit/
+URL:		http://www.pstoedit.com/
 BuildRequires:	ImageMagick-c++-devel >= 6
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
